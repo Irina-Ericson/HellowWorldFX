@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<GridPane alignment="center" hgap="10" prefHeight="374.0" prefWidth="534.0" vgap="10"
+          xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+          fx:controller="sample.Controller_Login">
+    <columnConstraints>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints/>
+    </rowConstraints>
+
+    <BorderPane prefHeight="600.0" prefWidth="600.0">
+        <top>
+            <ToolBar prefHeight="28.0" prefWidth="377.0" BorderPane.alignment="TOP_LEFT">
+                <Button fx:id="Login" alignment="TOP_CENTER" contentDisplay="TOP" mnemonicParsing="false"
+                        prefHeight="26.0" prefWidth="73.0" text="Min profil"/>
+                <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="Mina reservationer"/>
+                <Button mnemonicParsing="false" text="Mina lån"/>
+                <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="78.0" text="Logga ut"/>
+            </ToolBar>
+        </top>
+        <center>
+            <MenuBar prefHeight="28.0" prefWidth="212.0" BorderPane.alignment="CENTER">
+                <Menu fx:id="Start" mnemonicParsing="false" text="Start"/>
+                <Menu fx:id="Databaser" mnemonicParsing="false" text="Databaser"/>
+                <Menu fx:id="Oppetider" mnemonicParsing="false" text="Öppetider "/>
+                <Menu fx:id="Kontakta_oss" mnemonicParsing="false" text="Kontakta oss"/>
+            </MenuBar>
+        </center>
+        <bottom>
+            <Pane prefHeight="248.0" prefWidth="468.0" BorderPane.alignment="CENTER">
+                <children>
+                    <ImageView fitHeight="102.0" fitWidth="151.0" layoutX="377.0" pickOnBounds="true"
+                               preserveRatio="true"/>
+                    <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="334.0" layoutY="2.0" pickOnBounds="true"
+                               preserveRatio="true">
+                        <Image url="@luleå uni.jpeg"/>
+                    </ImageView>
+                    <Text layoutX="51.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0"
+                          text="Kontaktuppgifter och påminnelser" wrappingWidth="195.99853515625"/>
+                    <Text layoutX="39.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email "
+                          wrappingWidth="49.14453125"/>
+                    <Text layoutX="35.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Annat"/>
+                    <TextField layoutX="89.0" layoutY="81.0"/>
+                    <TextField layoutX="89.0" layoutY="115.0"/>
+                    <Button layoutX="192.0" layoutY="152.0" mnemonicParsing="false" text="Spara"/>
+                    <Button fx:id="backButton" layoutX="21.0" layoutY="208.0" mnemonicParsing="false"
+                            onAction="#goBackButtonOnAction" text="Tillbaka"/>
+                </children>
+            </Pane>
+        </bottom>
+    </BorderPane>
+</GridPane>

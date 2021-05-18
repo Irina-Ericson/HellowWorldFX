@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.MinaSidor">
+   <children>
+      <AnchorPane layoutX="-1.0" prefHeight="400.0" prefWidth="600.0">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="386.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="118.0" fitWidth="200.0" layoutX="386.0">
+               <image>
+                  <Image url="@../../../../Desktop/luleå%20uni.jpeg" />
+               </image>
+            </ImageView>
+            <Label layoutX="57.0" layoutY="30.0" prefHeight="17.0" prefWidth="133.0" text="Adress" />
+            <Label fx:id="MinAdress" layoutX="56.0" layoutY="59.0" prefHeight="17.0" prefWidth="268.0" />
+            <Label layoutX="56.0" layoutY="85.0" text="Mina lån" />
+            <Label fx:id="MinaLan" layoutX="56.0" layoutY="118.0" prefHeight="17.0" prefWidth="229.0" />
+            <Label layoutX="56.0" layoutY="150.0" prefHeight="17.0" prefWidth="268.0" />
+            <Label layoutX="56.0" layoutY="182.0" prefHeight="17.0" prefWidth="262.0" />
+            <Label layoutX="55.0" layoutY="219.0" prefHeight="17.0" prefWidth="262.0" />
+            <Label layoutX="56.0" layoutY="256.0" prefHeight="17.0" prefWidth="296.0" />
+            <Label layoutX="55.0" layoutY="295.0" prefHeight="17.0" prefWidth="325.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
