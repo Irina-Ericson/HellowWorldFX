@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.User">
+   <children>
+      <AnchorPane layoutX="21.0" layoutY="15.0" prefHeight="365.0" prefWidth="552.0">
+         <children>
+            <TextField layoutX="146.0" layoutY="22.0" prefHeight="25.0" prefWidth="303.0" text="Registration av användare" />
+            <TextField fx:id="name" layoutX="102.0" layoutY="74.0" prefHeight="25.0" prefWidth="124.0" />
+            <Label layoutX="4.0" layoutY="78.0" prefHeight="17.0" prefWidth="53.0" text="Förnamn" />
+            <Label layoutX="4.0" layoutY="130.0" prefHeight="17.0" prefWidth="80.0" text="Efternamn" />
+            <Label layoutX="4.0" layoutY="181.0" prefHeight="17.0" prefWidth="53.0" text="Telefon" />
+            <Label layoutX="4.0" layoutY="229.0" prefHeight="17.0" prefWidth="94.0" text="email" />
+            <Label layoutX="260.0" layoutY="78.0" prefHeight="17.0" prefWidth="87.0" text="Postnummer" />
+            <Label layoutX="262.0" layoutY="130.0" prefHeight="17.0" prefWidth="74.0" text="Gata" />
+            <Label layoutX="263.0" layoutY="181.0" prefHeight="17.0" prefWidth="53.0" text="Stad" />
+            <Label layoutX="262.0" layoutY="229.0" prefHeight="17.0" prefWidth="74.0" text="Lösenord" />
+            <TextField fx:id="surname" layoutX="102.0" layoutY="126.0" prefHeight="25.0" prefWidth="124.0" />
+            <TextField fx:id="telefonnummer" layoutX="102.0" layoutY="177.0" prefHeight="25.0" prefWidth="124.0" />
+            <TextField fx:id="email" layoutX="102.0" layoutY="225.0" prefHeight="25.0" prefWidth="124.0" />
+            <TextField fx:id="postnummer" layoutX="348.0" layoutY="74.0" />
+            <TextField fx:id="street" layoutX="348.0" layoutY="126.0" />
+            <TextField fx:id="city" layoutX="348.0" layoutY="177.0" />
+            <PasswordField fx:id="password" layoutX="348.0" layoutY="225.0" />
+            <Button fx:id="registerButton" layoutX="211.0" layoutY="294.0" mnemonicParsing="false" onAction="#RegisterButtonOnAction" prefHeight="25.0" prefWidth="124.0" text="Registrera" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
