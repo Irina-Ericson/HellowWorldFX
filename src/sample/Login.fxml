@@ -6,10 +6,10 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller_Login">
     <children>
-        <Label layoutX="286.0" layoutY="220.0" prefHeight="23.0" prefWidth="97.0" text="Password" />
-        <PasswordField fx:id="PasswordField" layoutX="400.0" layoutY="219.0" />
-        <Button fx:id="login2" layoutX="448.0" layoutY="273.0" mnemonicParsing="false" onAction="#login2ButtonOnAction" text="Logga in" />
-        <Label layoutX="291.0" layoutY="178.0" prefHeight="23.0" prefWidth="97.0" text="email:" />
+        <Label layoutX="401.0" layoutY="201.0" prefHeight="23.0" prefWidth="97.0" text="Password" />
+        <PasswordField fx:id="PasswordField" layoutX="400.0" layoutY="222.0" />
+        <Button fx:id="login2" layoutX="451.0" layoutY="273.0" mnemonicParsing="false" onAction="#login2ButtonOnAction" prefHeight="25.0" prefWidth="74.0" text="Logga in" />
+        <Label layoutX="403.0" layoutY="153.0" prefHeight="23.0" prefWidth="97.0" text="email:" />
         <TextField fx:id="EmailField" layoutX="400.0" layoutY="176.0" />
         <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="400.0" pickOnBounds="true" preserveRatio="true">
             <image>
@@ -17,17 +17,19 @@
             </image>
         </ImageView>
         <Button layoutX="14.0" layoutY="355.0" mnemonicParsing="false" text="Tillbaka" />
-      <Label fx:id="loginMessageLabel" layoutX="259.0" layoutY="264.0" prefHeight="17.0" prefWidth="215.0" />
+      <Label fx:id="loginMessageLabel" layoutX="259.0" layoutY="243.0" prefHeight="17.0" prefWidth="215.0" />
       <TextField fx:id="searchField" layoutX="14.0" layoutY="23.0" />
       <Button fx:id="searchButton" layoutX="26.0" layoutY="59.0" mnemonicParsing="false" onAction="#searchButtonOnAction" prefHeight="25.0" prefWidth="62.0" text="Sök" />
       <Label fx:id="searchMessageLabel" layoutX="234.0" layoutY="123.0" prefHeight="17.0" prefWidth="74.0" />
-      <TableView fx:id="searchTable" layoutX="27.0" layoutY="99.0" prefHeight="145.0" prefWidth="369.0">
+      <TableView fx:id="searchTable" layoutX="27.0" layoutY="99.0" prefHeight="145.0" prefWidth="301.0" visible="false">
         <columns>
           <TableColumn fx:id="colTitle" prefWidth="97.33334159851074" text="Titel" />
-          <TableColumn fx:id="colName" prefWidth="78.66669464111328" text="Författare" />
-            <TableColumn fx:id="colSurname" prefWidth="190.66666158040363" text="Column X" />
+          <TableColumn fx:id="colName" prefWidth="78.66669464111328" text="Namn" />
+            <TableColumn fx:id="colSurname" prefWidth="120.0" text="Efternamn" />
         </columns>
       </TableView>
       <Separator orientation="VERTICAL" prefHeight="200.0" />
+      <Label layoutX="463.0" layoutY="314.0" prefHeight="17.0" prefWidth="32.0" text="Eller" textAlignment="CENTER" />
+      <Button fx:id="regButton" layoutX="453.0" layoutY="343.0" mnemonicParsing="false" onAction="#regButtonOnAction" prefHeight="25.0" prefWidth="74.0" text="Registrera" />
     </children>
 </AnchorPane>

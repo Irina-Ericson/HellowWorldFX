@@ -1,25 +1,19 @@
 package sample;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
-
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import java.util.*;
-import javafx.collections.ObservableArray;
+import javafx.util.Callback;
 
 
 public class Controller_Login {
@@ -37,65 +31,29 @@ public class Controller_Login {
     private PasswordField PasswordField;
     @FXML
     private Button searchButton;
-    @FXML
-    private Label searchMessageLabel;
-    @FXML
-    private Label eNamn1;
-    @FXML
-    private Label fNamn1;
-    @FXML
-    private Label titel1;
+    @FXML private Button searchButtonOnAction;
 
     @FXML
-    private Label eNamn2;
+    private TableView searchTable;
+
     @FXML
-    private Label fNamn2;
+    private TableColumn<Book, String> colTitle;
     @FXML
-    private Label titel2;
-    @FXML private TableView searchTable;
-    @FXML private ObservableList<Book>getBook;
-    private Object Book;
-    @FXML private TableColumn <Book,String> colTitle;
-    @FXML private TableColumn <Book,String> colName;
-    @FXML private TableColumn <Book,String> colSurname;
+    private TableColumn<Book, String> colName;
+    @FXML
+    private TableColumn<Book, String> colSurname;
+    @FXML private TableColumn colBorrow;
+    @FXML Button borrowButton;
+    @FXML Button regButton;
 
-
-    public class Book extends Object{
-        String fNamn;
-        String eNamn;
-        String titel;
-
-        public void setAll(TableColumn<Book, String> nameColumn, TableColumn<Book, String> surnameColumn, TableColumn<Book, String> titelColumn) {
-        }
-
-        public String getfNamn() {
-            return fNamn;
-        }
-
-        public void setfNamn(String fNamn) {
-            this.fNamn = fNamn;
-        }
-
-        public String geteNamn() {
-            return eNamn;
-        }
-
-        public void seteNamn(String eNamn) {
-            this.eNamn = eNamn;
-        }
-
-        public String getTitel() {
-            return titel;
-        }
-
-        public void setTitel(String titel) {
-            this.titel = titel;
-        }
+    public void regButtonOnAction(ActionEvent event) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("User.fxml"));
+        Stage window = (Stage) regButton.getScene().getWindow();
+        window.setScene(new Scene(root, 600, 475));
+        window.show();
     }
 
-    @FXML public TableView<Book> searchResultTable;
-
-    public void login2ButtonOnAction(ActionEvent event) throws Exception {
+   public void login2ButtonOnAction(ActionEvent event) throws Exception {
         if (EmailField.getText().isBlank() == false && PasswordField.getText().isBlank() == false) {
             validateLogin();
 
@@ -137,82 +95,90 @@ public class Controller_Login {
         Stage window = (Stage) backButton.getScene().getWindow();
         window.setScene(new Scene(root, 600, 475));
         window.show();
-
-
     }
 
-    public void searchButtonOnAction(ActionEvent event) throws Exception {
+@FXML private void borrowButtonOnAction(ActionEvent event){}
+
+    @FXML
+    private void searchButtonOnAction(ActionEvent event) throws ClassNotFoundException, SQLException {
+
+
         sample.DatabaseConnection connectNow = new sample.DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
-
         String searchResource = "select Titel,eFörfattare,fFörfattare from artikel\n" +
                 "where Titel like '" + searchField.getText() + "'";
-        private void populateTable(ObservableList<Book>bookList){
-            searchTable.setItems(booklist);
 
-        }
-
-        private void initialize() throw Exception{
-            colTitle.setCellValueFactory(cellData ->cellData.getValue().getTitel.asObject());
-            colName.setCellValueFactory(cellData ->cellData.getValue().getfNamn.asObject());
-            colSurname.setCellValueFactory(cellData ->cellData.getValue().geteNamn.asObject());
-            ObservableList<Book>bookList=Book.getAllRecords();
-            populateTable(bookList);
-        }
-
-            try {
-                Statement statement = connectDB.createStatement();
-                ResultSet queryResult = statement.executeQuery(searchResource);
-                ObservableList<Book> bookList = FXCollections.observableArrayList();
-
+        try {
+            Statement statement = connectDB.createStatement();
+            ResultSet queryResult = statement.executeQuery(searchResource);
+            ObservableList<Book> bookList = FXCollections.observableArrayList();
+            {
                 while (queryResult.next()) {
-                    Book book=new Book();
-                    book.setTitel(queryResult.getString("Titel"));
-                    book.setfNamn(queryResult.getString("Namn"));
-                    book.seteNamn(queryResult.getString("Efternamn"));
-                    bookList.add(book);}
-                return bookList;}
-                    //TableColumn<Book, String> nameColumn = new TableColumn<> ("Namn");
-                   //nameColumn.setCellValueFactory(new PropertyValueFactory <>("Namn"));
-                   //TableColumn<Book, String> surnameColumn= new TableColumn<> ("Efternamn");
-                   //surnameColumn.setCellValueFactory(new PropertyValueFactory <>("Efternamn"));
-                   //TableColumn<Book, String> titelColumn= new TableColumn<> ("Titel");
-                   //titelColumn.setCellValueFactory(new PropertyValueFactory <>("Titel"));
-                   // searchTable.getColumns().setAll(nameColumn, surnameColumn, titelColumn);
-                    //FilteredList<Book>filteredData=new FilteredList<>(dataList, b ->true);
+                    Book book1 = new Book();
+                    bookList.add(book1);
+                    book1.setTitel(queryResult.getString("Titel"));
+                    book1.setENamn(queryResult.getString("eFörfattare"));
+                    book1.setFNamn(queryResult.getString("fFörfattare"));
+                    book1.setIdArtikelBarcode(queryResult.getInt("idArtikelBarcode"));
 
-                   // searchField.textProperty().addListener((observable,oldValue,newValue)->{
-                       // filteredData.setPredicate(book1 -> {
-                          //  if (newValue == null || newValue.isEmpty()) {
-                            //    return true;
-                          //  }
-                         /*   String lowerCaseFilter=newValue.toLowerCase();
-                            if(book1.getfNamn().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                                return true;
+                    colName.setCellValueFactory(new PropertyValueFactory<Book, String>("fNamn"));
+                    colTitle.setCellValueFactory(new PropertyValueFactory<Book, String>("titel"));
+                    colSurname.setCellValueFactory(new PropertyValueFactory<Book, String>("eNamn"));
+
+                    //create a cell factory to insert a button in every row
+                   /* Callback<TableColumn<Book, String>, TableCell<Book, String>> cellFactory =(param)->{
+                        final TableCell<Book,String> cell=new TableCell<Book,String>(){
+                        //override updateItem method
+                            @Override
+                            public void updateItem(String item, boolean empty){
+                                super.updateItem(item, empty);
+                                //ensure that cell is creaated only on non-empty rows
+                                if(empty){
+                                    setGraphic(null);
+                                    setText(null);
+                                }
+                                else{
+                                    //Now we can create the action button
+                                    final Button borrowButton=new Button("Låna");
+                                    //attach listener on button, what to do when clicked
+                                    borrowButton.setOnAction(event ->{
+                                        //extract the clicked Book object
+                                        Book b=getTableView().getItems().get(getIndex());
+                                        //lets show which item has been selected
+                                        Alert alert=new Alert(Alert.AlertType.INFORMATION);
+                                        alert.setContentText("You have clicked \n " +b.getTitel()+"with författare \n "+b.getFNamn());
+                                        alert.show();
+
+                                    });
+                                    //set the button
+                                    setGraphic(borrowButton);
+                                    setText(null);
+                                }
                             }
-                            if(book1.geteNamn().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                                return true;}
-                            if(book1.getTitel().toLowerCase().indexOf(lowerCaseFilter)!=-1){
-                                return true;}
-                            else
-                        return false;
-                        });
-                    });
+                        };
 
-                  nameColumn.setText(queryResult.getString("eFörfattare"));
-                  surnameColumn.setText(queryResult.getString("fFörfattare"));
-                  titelColumn.setText(queryResult.getString("Titel"));
 
-            SortedList<Book>searchData=new SortedList<>(filteredData);
-            searchData.comparatorProperty().bind(searchTable.comparatorProperty());
-            searchTable.setItems(searchData);}*/}}
+                        return cell;
+                    };
+//set the custom factory to action column
+                    colBorrow.setCellFactory(cellFactory);*/
+                    searchTable.setItems(bookList);
+                    searchTable.setVisible(true);
 
-            catch (Exception e) {
-                e.printStackTrace();
-                e.getCause();
-            }
 
-        }}
+
+                }
+
+            }}
+       catch (SQLException e) {
+            e.printStackTrace();
+            e.getCause();
+            throw e;
+        }}}
+
+
+
+
 
 
 
